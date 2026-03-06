@@ -79,7 +79,7 @@ class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
         ),
       );
     } else {
-      return widget.child;
+      return Navigator(onGenerateRoute: _buildInitialRoute);
     }
   }
 }
