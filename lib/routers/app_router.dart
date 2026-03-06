@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_app_task/features/home/screen/home_screen.dart';
 import 'package:flutter_web_app_task/features/navbar_screen.dart';
-import 'package:flutter_web_app_task/features/intro/intro_screen.dart';
-import 'package:flutter_web_app_task/features/intro/intro_screen_2.dart';
+import 'package:flutter_web_app_task/features/intro/screen/intro_screen.dart';
+import 'package:flutter_web_app_task/features/intro/screen/intro_screen_2.dart';
 
 class AppRouter {
   static const String intro = '/';

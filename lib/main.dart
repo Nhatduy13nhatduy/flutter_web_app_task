@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_app_task/core/app_theme.dart';
-import 'package:flutter_web_app_task/features/intro/intro_screen.dart';
+import 'package:flutter_web_app_task/features/intro/screen/intro_screen.dart';
 import 'package:flutter_web_app_task/responsive_wrapper.dart';
 
 void main() {
