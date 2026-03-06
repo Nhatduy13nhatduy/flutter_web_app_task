@@ -26,7 +26,7 @@ class _IntroScreen2State extends State<IntroScreen2> {
   }
 
   void _onContinue() {
-    Navigator.pushNamed(context, AppRouter.home);
+    Navigator.pushReplacementNamed(context, AppRouter.navbar);
   }
 
   void _toggleImageLayout() {
