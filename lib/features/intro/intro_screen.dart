@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_app_task/features/intro/intro_screen2.dart';
 import 'package:flutter_web_app_task/global_widgets/random_image_widget.dart';
 
 class IntroScreen extends StatelessWidget {
@@ -29,7 +30,13 @@ class IntroScreen extends StatelessWidget {
                   color: Theme.of(context).colorScheme.primary,
                 ),
                 child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute<void>(
+                        builder: (_) => const IntroScreen2(),
+                      ),
+                    );
+                  },
                   icon: Icon(
                     Icons.arrow_forward,
                     color: Theme.of(context).colorScheme.surface,

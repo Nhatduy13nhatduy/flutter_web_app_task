@@ -3,10 +3,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_web_app_task/global_widgets/random_image_widget.dart';
 
-class ResponsiveWrapper extends StatelessWidget {
+class ResponsiveWrapper extends StatefulWidget {
   final Widget child;
 
   const ResponsiveWrapper({super.key, required this.child});
+
+  @override
+  State<ResponsiveWrapper> createState() => _ResponsiveWrapperState();
+}
+
+class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
 
   bool _isWebDesktop(BuildContext context) {
     if (!kIsWeb) return false;
@@ -23,6 +29,13 @@ class ResponsiveWrapper extends StatelessWidget {
     return (isDesktopPlatform || hasMouse) && !isPhoneLayout;
   }
 
+  Route<void> _buildInitialRoute(RouteSettings settings) {
+    return MaterialPageRoute<void>(
+      settings: settings,
+      builder: (_) => widget.child,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final isDesktopWeb = _isWebDesktop(context);
@@ -32,7 +45,11 @@ class ResponsiveWrapper extends StatelessWidget {
         body: Stack(
           fit: StackFit.expand,
           children: [
-            RandomImageWidget(width: 1920, height: 1080, fit: BoxFit.cover),
+            const RandomImageWidget(
+              width: 1920,
+              height: 1080,
+              fit: BoxFit.cover,
+            ),
             Container(
               color: Theme.of(
                 context,
@@ -50,14 +67,16 @@ class ResponsiveWrapper extends StatelessWidget {
                   ],
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: child,
+                child: Navigator(
+                  onGenerateRoute: _buildInitialRoute,
+                ),
               ),
             ),
           ],
         ),
       );
     } else {
-      return child;
+      return widget.child;
     }
   }
 }
