@@ -14,6 +14,8 @@ class ResponsiveWrapper extends StatefulWidget {
 }
 
 class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
+  final GlobalKey<NavigatorState> _navigatorKey = GlobalKey<NavigatorState>();
+
   bool _isWebDesktop(BuildContext context) {
     if (!kIsWeb) return false;
 
@@ -39,6 +41,10 @@ class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
       settings: settings,
       builder: (_) => widget.child,
     );
+  }
+
+  Widget _buildAppNavigator() {
+    return Navigator(key: _navigatorKey, onGenerateRoute: _buildInitialRoute);
   }
 
   @override
@@ -72,14 +78,14 @@ class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
                   ],
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: Navigator(onGenerateRoute: _buildInitialRoute),
+                child: _buildAppNavigator(),
               ),
             ),
           ],
         ),
       );
     } else {
-      return Navigator(onGenerateRoute: _buildInitialRoute);
+      return _buildAppNavigator();
     }
   }
 }
