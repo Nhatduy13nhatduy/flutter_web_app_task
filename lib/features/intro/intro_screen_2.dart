@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_app_task/global_widgets/random_image_widget.dart';
+import 'package:flutter_web_app_task/routers/app_router.dart';
 
 class IntroScreen2 extends StatefulWidget {
   const IntroScreen2({super.key});
@@ -20,20 +21,12 @@ class _IntroScreen2State extends State<IntroScreen2> {
     'Start with a map, choose a route, and let each day become a new memory.',
   ];
 
-  void _showMapMessage() {
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Map feature is coming soon.')),
-    );
-  }
-
   void _onSkip() {
     Navigator.of(context).pop();
   }
 
   void _onContinue() {
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text('Continue to the next step.')));
+    Navigator.pushNamed(context, AppRouter.home);
   }
 
   void _toggleImageLayout() {
@@ -146,7 +139,7 @@ class _IntroScreen2State extends State<IntroScreen2> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: IconButton(
-                        onPressed: _showMapMessage,
+                        onPressed: () {},
                         icon: Icon(
                           Icons.map_outlined,
                           color: Theme.of(context).colorScheme.surface,

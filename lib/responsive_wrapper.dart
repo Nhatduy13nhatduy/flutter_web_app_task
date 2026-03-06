@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_web_app_task/global_widgets/random_image_widget.dart';
+import 'package:flutter_web_app_task/routers/app_router.dart';
 
 class ResponsiveWrapper extends StatefulWidget {
   final Widget child;
@@ -13,7 +14,6 @@ class ResponsiveWrapper extends StatefulWidget {
 }
 
 class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
-
   bool _isWebDesktop(BuildContext context) {
     if (!kIsWeb) return false;
 
@@ -30,6 +30,11 @@ class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
   }
 
   Route<void> _buildInitialRoute(RouteSettings settings) {
+    final routeName = settings.name;
+    if (routeName != null && routeName != Navigator.defaultRouteName) {
+      return AppRouter.onGenerateRoute(settings);
+    }
+
     return MaterialPageRoute<void>(
       settings: settings,
       builder: (_) => widget.child,
@@ -67,9 +72,7 @@ class _ResponsiveWrapperState extends State<ResponsiveWrapper> {
                   ],
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: Navigator(
-                  onGenerateRoute: _buildInitialRoute,
-                ),
+                child: Navigator(onGenerateRoute: _buildInitialRoute),
               ),
             ),
           ],

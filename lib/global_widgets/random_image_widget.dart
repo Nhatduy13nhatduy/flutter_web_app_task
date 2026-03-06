@@ -14,8 +14,10 @@ class RandomImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final randomId = DateTime.now().millisecondsSinceEpoch;
+
     return Image.network(
-      'https://picsum.photos/$width/$height',
+      'https://picsum.photos/$width/$height?random=$randomId',
       width: width,
       height: height,
       fit: fit,
