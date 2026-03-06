@@ -3,12 +3,14 @@ import 'package:flutter_web_app_task/features/home/screen/home_screen.dart';
 import 'package:flutter_web_app_task/features/navbar_screen.dart';
 import 'package:flutter_web_app_task/features/intro/screen/intro_screen.dart';
 import 'package:flutter_web_app_task/features/intro/screen/intro_screen_2.dart';
+import 'package:flutter_web_app_task/features/phone/screen/video_screen.dart';
 
 class AppRouter {
   static const String intro = '/';
   static const String intro2 = '/intro2';
   static const String home = '/home';
   static const String navbar = '/navbar';
+  static const String video = '/video';
 
   static Route<void> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -31,6 +33,11 @@ class AppRouter {
         return MaterialPageRoute<void>(
           settings: settings,
           builder: (_) => const NavbarScreen(),
+        );
+      case video:
+        return MaterialPageRoute<void>(
+          settings: settings,
+          builder: (_) => const VideoScreen(),
         );
       default:
         return MaterialPageRoute<void>(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web_app_task/routers/app_router.dart';
 
 class PhoneScreen extends StatefulWidget {
   const PhoneScreen({super.key});
@@ -98,7 +99,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
               height: 50,
               margin: const EdgeInsets.only(top: 20),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(context, AppRouter.video),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.surface,
                   foregroundColor: Theme.of(context).colorScheme.onSurface,
