@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web_app_task/features/intro/intro_screen2.dart';
+import 'package:flutter_web_app_task/features/intro/intro_screen_2.dart';
 import 'package:flutter_web_app_task/global_widgets/random_image_widget.dart';
 
 class IntroScreen extends StatelessWidget {
